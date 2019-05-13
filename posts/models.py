@@ -20,6 +20,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
