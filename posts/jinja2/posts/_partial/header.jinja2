@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="logo left">
+        <a href="{{ url_for('index') }}">
+            {#- <img class="left" src="img/logo.svg"/> #}
+            <div class="logo-title left">{% if BLOG_TITLE %}{{ BLOG_TITLE }}{% endif %}</div>
+        </a>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="signpart right">
+        {#- <a href="{{ url_for('search') }}">Search</a> #}
+        {#- pages list #}
+        <a href="#rss">RSS</a>
+    </div>
+    <div style="clear: both;"></div>
+</div>

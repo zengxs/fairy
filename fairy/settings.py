@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'fairy.utils.blog_settings_context_processor',
             ],
         },
     },
@@ -144,3 +145,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Blog settings
+BLOG_SETTINGS = {k: v for k, v in os.environ.items() if k.startswith('BLOG_')}

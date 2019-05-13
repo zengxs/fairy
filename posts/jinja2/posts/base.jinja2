@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+{% block html %}
+    <head>
+        {% block meta -%}
+            {% include "posts/_partial/meta.jinja2" %}
+        {% endblock -%}
+
+        <title>{% block title %}{% if BLOG_TITLE %}{{ BLOG_TITLE }}{% endif %}{% endblock %}</title>
+
+        {% block styles -%}
+            <link href="{{ static('normalize.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ static('style.css') }}" rel="stylesheet" type="text/css"/>
+        {% endblock styles -%}
+
+        {%- block before_scripts %}{% endblock %}
+    </head>
+
+    <body>
+    {%- block body %}
+        <div id="header">
+            {%- block header %}
+                {% include "posts/_partial/header.jinja2" %}
+            {%- endblock %}
+        </div>
+
+        <div class="content">
+            {%- block content %}
+            {%- endblock %}
+        </div>
+
+        <div id="footer">
+            {%- block footer %}
+                {% include "posts/_partial/footer.jinja2" %}
+            {%- endblock %}
+        </div>
+        {%- block after_scripts %}{% endblock %}
+    {% endblock body -%}
+    </body>
+
+{%- endblock html %}
+</html>

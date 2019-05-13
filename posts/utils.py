@@ -56,6 +56,15 @@ def _bleach(html: str):
     return bleach.clean(html, tags=allowed_tags, attributes=allowed_attrs, protocols=allowed_protocols)
 
 
+def strftime(datetime, fmt='%Y-%m-%d %H:%M:%S'):
+    """
+    :param datetime.datetime datetime: time for format
+    :param str fmt: format
+    :rtype: str
+    """
+    return datetime.strftime(fmt)
+
+
 class PostsFiltersExtension(Extension):
     def __init__(self, environment):
         """
@@ -66,6 +75,7 @@ class PostsFiltersExtension(Extension):
             'gravatar': gravatar,
             'markdown': markdown,
             'bleach': _bleach,
+            'strftime': strftime,
         })
         super().__init__(environment)
 

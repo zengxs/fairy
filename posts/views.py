@@ -8,7 +8,7 @@ from posts.models import Post
 # Create your views here.
 def index(request):
     posts = Post.objects.order_by('-created_at').all()
-    return render(request, 'posts/index.html', {'posts': posts})
+    return render(request, 'posts/index.jinja2', {'posts': posts})
 
 
 def post(request, slug):
@@ -21,4 +21,4 @@ def post(request, slug):
     if resolve(request.path_info).url_name != should_route_name:
         redirect(should_route_name, slug=slug)
 
-    return render(request, 'posts/post.html', {'post': p})
+    return render(request, 'posts/post.jinja2', {'post': p})

@@ -1,0 +1,25 @@
+{% extends "posts/base.jinja2" %}
+
+{% block title %}{{ post.title }} - {{ super() }}{% endblock %}
+
+{% block content %}
+    <div class="body-content article_detail detail">
+        <div class="article_detail_head">
+            <div class="title">
+                <h1>{{ post.title }}</h1>
+            </div>
+            <p class="vice-title">
+                {{ post.author.last_name }}{{ post.author.first_name }}
+                发表于 <span class="article_created_time">{{ post.created_at | strftime('%Y-%m-%d %H:%M') }}</span>
+            </p>
+            <p>
+                <small>
+                    Tags:&nbsp; {{ post.tags.all() | join(',') }}
+                </small>
+            </p>
+        </div>
+        <div class="detail-body">
+            {{ post.content | markdown | safe }}
+        </div>
+    </div>
+{% endblock %}
