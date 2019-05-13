@@ -66,13 +66,13 @@ TEMPLATES = [
         },
     },
     {
-        'BACKEND': 'fairy.template.backends.Jinja2',
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            'filters': [
-                'fairy.template.utils.jinja2_filters',
-                'posts.utils.jinja2_filters',
+            'extensions': [
+                'fairy.utils.DjangoTemplateTagsExtension',
+                'posts.utils.PostsFiltersExtension',
             ],
             'context_processors': [
                 'django.template.context_processors.debug',

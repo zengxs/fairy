@@ -4,6 +4,7 @@ from urllib.parse import quote
 
 import bleach
 import mistletoe
+from jinja2.ext import Extension
 
 
 def md5(text: str):
@@ -55,11 +56,18 @@ def _bleach(html: str):
     return bleach.clean(html, tags=allowed_tags, attributes=allowed_attrs, protocols=allowed_protocols)
 
 
+class PostsFiltersExtension(Extension):
+    def __init__(self, environment):
+        """
+        :param jinja2.Environment environment: Jinja2 environment
+        """
+        environment.filters.update({
+            'md5': md5,
+            'gravatar': gravatar,
+            'markdown': markdown,
+            'bleach': _bleach,
+        })
+        super().__init__(environment)
 
-def jinja2_filters():
-    return {
-        'md5': md5,
-        'gravatar': gravatar,
-        'markdown': markdown,
-        'bleach': _bleach,
-    }
+    def parse(self, parser):
+        pass
