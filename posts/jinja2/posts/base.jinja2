@@ -9,8 +9,12 @@
         <title>{% block title %}{% if BLOG_TITLE %}{{ BLOG_TITLE }}{% endif %}{% endblock %}</title>
 
         {% block styles -%}
-            <link href="{{ static('normalize.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ static('style.css') }}" rel="stylesheet" type="text/css"/>
+            {% if debug %}
+            <link rel="stylesheet" href="{{ static('lib/normalize.css/normalize.css') }}" />
+            {% else %}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" />
+            {% endif %}
+            <link rel="stylesheet" href="{{ static('style.css') }}" />
         {% endblock styles -%}
 
         {%- block before_scripts %}{% endblock %}
