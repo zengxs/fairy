@@ -1,3 +1,5 @@
+[github_license]: https://img.shields.io/github/license/zengxs/fairy.svg?logo=github&logoColor=white
+
 # Fairy
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License][github_license]](LICENSE)
