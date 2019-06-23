@@ -1,16 +1,22 @@
-<div class="header">
-    <div class="logo left">
-        <a href="{{ url_for('index') }}">
-            {#- <img class="left" src="img/logo.svg"/> #}
-            <div class="logo-title left">{% if BLOG_TITLE %}{{ BLOG_TITLE }}{% endif %}</div>
-        </a>
-        <div style="clear: both;"></div>
-    </div>
+<nav class="navbar navbar-expand-md navbar-light" role="navigation">
+    {# brand #}
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+        {% if BLOG_TITLE %}
+            {{ BLOG_TITLE }}
+        {% else %}
+            Fairy
+        {% endif %}
+    </a>
 
-    <div class="signpart right">
-        {#- <a href="{{ url_for('search') }}">Search</a> #}
-        {#- pages list #}
-        <a href="#rss">RSS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-collapsible" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link">About</a>
+            </li>
+        </ul>
     </div>
-    <div style="clear: both;"></div>
-</div>
+</nav>

@@ -1,2 +1,15 @@
-html {
+.fairy-post-card .card-header h1 {
+    font-family: serif;
+    font-size: 1.75em;
+}
+
+.fairy-post-card .card-header .post-meta {
+    font-size: .75em;
+}
+
+.fairy-post-card .post-summary,
+.fairy-post-card .post-summary h1,
+.fairy-post-card .post-summary h2,
+.fairy-post-card .post-summary h3 {
+    font-size: 1em;
 }

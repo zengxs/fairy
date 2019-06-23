@@ -1,26 +1,39 @@
 {% extends "posts/base.jinja2" %}
 
 {% block content %}
-    <div class="body-content">
-        <div class="article-list-section">
-            <div class="article-list-head head">
-                <span>最新文章</span>
+<div class="fairy-post-list">
+    {% for post in posts %}
+    <div class="card fairy-post-card">
+        <div class="card-header">
+            <h1 class="fairy-post-title">
+                <a class="text-dark text-decoration-none" href="{{ url_for('post', slug=post.slug) }}">
+                    {{ post.title }}
+                </a>
+            </h1>
+            <div class="post-meta text-muted">
+                <span class="post-meta-date">
+                    <i class="fa fa-calendar"></i>
+                    {{ post.created_at | strftime('%Y年%m月%d日') }}
+                </span>
+                <span class="post-meta-category">
+                    <i class="fa fa-flag-o"></i>
+                    {{ post.category.name }}
+                </span>
             </div>
+        </div>
+        <div class="card-body markdown post-summary">
+            {{ post.content | markdown | safe }}
+        </div>
+        <div class="card-footer">
 
-            <div class="article-list-container container article-list">
-                <ul>
-                    {% for post in posts %}
-                        <li>
-                            <a href="{{ url_for('post', slug=post.slug) }}" class="title">{{ post.title }}</a>
-                            <span class="right">
-                            <span class="author">{{ post.author.last_name }}{{ post.author.first_name }}</span>
-                            <span class="timestamp">{{ post.created_at | strftime('%Y-%m-%d %H:%M') }}</span>
-                            </span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div style="clear: both;"></div>
+            <a class="btn btn-sm btn-dark text-light float-right" href="{{ url_for('post', slug=post.slug) }}">
+                阅读更多 <i class="fa fa-angle-double-right"></i>
+            </a>
+        {# <span class="author">{{ post.author.last_name }}{{ post.author.first_name }}</span> #}
+        </span>
+
         </div>
     </div>
+    {% endfor %}
+</div>
 {% endblock %}
