@@ -3,4 +3,5 @@
 # Fairy
 
 [![License][github_license]](LICENSE)
-![Azure DevOps builds](https://img.shields.io/azure-devops/build/zengxs/db931646-43c3-44f1-8675-d3660c93fc96/2.svg?logo=azure-pipelines)
+[![Build Status](https://dev.azure.com/zengxs/fairy/_apis/build/status/zengxs.fairy?branchName=master)](https://dev.azure.com/zengxs/fairy/_build/latest?definitionId=2&branchName=master)
+![Azure DevOps releases](https://vsrm.dev.azure.com/zengxs/_apis/public/Release/badge/db931646-43c3-44f1-8675-d3660c93fc96/1/1)

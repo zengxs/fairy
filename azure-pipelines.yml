@@ -12,8 +12,6 @@ strategy:
   matrix:
     Python36:
       PYTHON_VERSION: '3.6'
-    Python37:
-      PYTHON_VERSION: '3.7'
   maxParallel: 3
 
 steps:
@@ -56,8 +54,3 @@ steps:
     testRunTitle: 'Python $(PYTHON_VERSION)'
   condition: succeededOrFailed()
 
-- script: |
-    docker build . -t zengxs/fairy
-    docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
-    docker push zengxs/fairy
-  displayName: 'Docker build and push'
