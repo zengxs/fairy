@@ -3,10 +3,22 @@
         <i class="fa fa-flag-o"></i>
         分类
     </div>
-    <div class="card-body">
-        <ul>
-        </ul>
-    </div>
+    <ul class="list-group list-group-flush">
+        {% for category in Category.objects.all() %}
+            {% set post_count = Post.objects.filter(is_public=true, is_page=false, category=category).count() %}
+            {% if post_count == 0 %}
+                {% continue %}
+            {% endif %}
+            <li class="list-group-item">
+                {# TODO: category link #}
+                <a class="text-dark text-decoration-none" href="#todo">
+                    {{ category.name }}
+                    <span class="badge badge-pill badge-primary">{{ post_count }}</span>
+                    <span class="sr-only">posts</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 <br />
 
@@ -15,6 +27,31 @@
         <i class="fa fa-tags"></i>
         标签
     </div>
-    <div class="card-body">
+    <ul class="list-group list-group-flush">
+        {% for tag in Tag.objects.all() %}
+            {% set post_count = Post.objects.filter(is_public=true, is_page=false, tags__in=[tag]).count() %}
+            {% if post_count == 0 %}
+                {% continue %}
+            {% endif %}
+            <li class="list-group-item">
+                {# TODO: tag link #}
+                <a class="text-dark text-decoration-none" href="#todo">
+                    <i class="fa fa-tag"></i>
+                    {{ tag.name }}
+                    <span class="badge badge-pill badge-primary">{{ post_count }}</span>
+                    <span class="sr-only">posts</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<br />
+
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-heart-o"></i>
+        友情链接
     </div>
+    <ul class="list-group list-group-flush">
+    </ul>
 </div>

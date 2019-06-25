@@ -7,7 +7,7 @@ from posts.models import Post
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.order_by('-created_at').all()
+    posts = Post.objects.filter(is_public=True, is_page=False).order_by('-created_at').all()
     return render(request, 'posts/index.jinja2', {'posts': posts})
 
 

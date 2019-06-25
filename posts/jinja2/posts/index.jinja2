@@ -22,18 +22,18 @@
             </div>
         </div>
         <div class="card-body markdown post-summary">
-            {{ post.content | markdown | safe }}
+            {{ post.content | summary | markdown | safe }}
         </div>
         <div class="card-footer">
 
             <a class="btn btn-sm btn-dark text-light float-right" href="{{ url_for('post', slug=post.slug) }}">
                 阅读更多 <i class="fa fa-angle-double-right"></i>
             </a>
-        {# <span class="author">{{ post.author.last_name }}{{ post.author.first_name }}</span> #}
         </span>
 
         </div>
     </div>
+    <br />
     {% endfor %}
 </div>
 {% endblock %}

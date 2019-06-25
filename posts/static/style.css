@@ -1,9 +1,17 @@
+.post-title {
+    font-family: serif;
+}
+
+.post-full-content {
+    padding-top: 18px;
+}
+
 .fairy-post-card .card-header h1 {
     font-family: serif;
     font-size: 1.75em;
 }
 
-.fairy-post-card .card-header .post-meta {
+.post-meta > span {
     font-size: .75em;
 }
 

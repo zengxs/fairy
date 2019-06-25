@@ -6,6 +6,8 @@ import bleach
 import mistletoe
 from jinja2.ext import Extension
 
+from posts.models import Post, Tag, Category, Comment
+
 
 def md5(text: str):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
@@ -41,6 +43,15 @@ def markdown(content: str, use_cache: bool = True):
     return html
 
 
+def summary(content, sep='<!--more-->'):
+    """
+    get markdown summary (get content before readmore)
+    :param str content: markdown content
+    """
+    index = content.index(sep)
+    return content[:index]
+
+
 def _bleach(html: str):
     allowed_tags = [
         'span', 'strong', 'em', 'code', 'del', 'ins', 'img', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i',
@@ -74,10 +85,28 @@ class PostsFiltersExtension(Extension):
             'md5': md5,
             'gravatar': gravatar,
             'markdown': markdown,
+            'summary': summary,
             'bleach': _bleach,
             'strftime': strftime,
         })
         super().__init__(environment)
+
+    def parse(self, parser):
+        pass
+
+
+class PostsModelsExtension(Extension):
+    def __init__(self, env):
+        """
+        :param jinja2.Environment env: Jinja2 environment
+        """
+        env.globals.update({
+            'Post': Post,
+            'Tag': Tag,
+            'Category': Category,
+            'Comment': Comment,
+        })
+        super().__init__(env)
 
     def parse(self, parser):
         pass

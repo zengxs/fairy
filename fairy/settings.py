@@ -71,8 +71,10 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'extensions': [
+                'jinja2.ext.loopcontrols',
                 'fairy.utils.DjangoTemplateTagsExtension',
                 'posts.utils.PostsFiltersExtension',
+                'posts.utils.PostsModelsExtension',
             ],
             'context_processors': [
                 'django.template.context_processors.debug',

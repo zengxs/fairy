@@ -14,9 +14,20 @@
 
     <div id="navbar-collapsible" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link">About</a>
-            </li>
+            {%- for page in Post.objects.filter(is_public=true, is_page=true).order_by('-created_at').all() %}
+                {# 检查是否为此 page 页面 -#}
+                {%- set url_match = request.resolver_match %}
+                {%- if url_match.view_name == 'page' %}
+                    {%- if url_match.kwargs.get('slug') == page.slug %}
+                        {%- set current_active = true %}
+                    {%- else %}
+                        {%- set current_active = false %}
+                    {%- endif %}
+                {%- endif %}
+                <li class="nav-item {% if current_active %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('page', slug=page.slug) }}">{{ page.title }}</a>
+                </li>
+            {%- endfor %}
         </ul>
     </div>
 </nav>
