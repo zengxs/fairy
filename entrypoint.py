@@ -21,8 +21,9 @@ def manage(args):
     os.system(' '.join(['python', 'manage.py'] + args))
 
 
-def migrate():
-    manage(['migrate'])
+def random_secret():
+    from django.core.management.utils import get_random_secret_key
+    print(get_random_secret_key())
 
 
 def freeze():
@@ -48,9 +49,10 @@ def main():
         cmd = args[1]
     if cmd == 'freeze':
         freeze()
-    elif cmd == 'migrate':
-        check()
-        migrate()
+    elif cmd == 'random-secret-key':
+        random_secret()
+    elif cmd in ['collectstatic', 'migrate']:
+        manage([cmd])
     elif cmd == 'manage':
         check()
         if len(args) < 3:
