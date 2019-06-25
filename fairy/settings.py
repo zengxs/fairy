@@ -90,10 +90,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fairy.wsgi.application'
 
-# Session
-# https://docs.djangoproject.com/en/2.2/ref/settings/#sessions
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-
 # Password hashers
 # https://docs.djangoproject.com/en/2.2/ref/settings/#password-hashers
 PASSWORD_HASHERS = [
