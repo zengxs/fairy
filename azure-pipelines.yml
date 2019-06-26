@@ -12,6 +12,8 @@ strategy:
   matrix:
     Python36:
       PYTHON_VERSION: '3.6'
+    Python37:
+      PYTHON_VERSION: '3.7'
   maxParallel: 3
 
 steps:
@@ -38,7 +40,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip setuptools wheel tomlkit
-    python entrypoint.py freeze > requirements.txt
+    python freeze.py > requirements.txt
     pip install -r requirements.txt
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
@@ -53,8 +55,3 @@ steps:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
   condition: succeededOrFailed()
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: 'WebApp'
