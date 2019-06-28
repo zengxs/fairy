@@ -6,7 +6,7 @@ import bleach
 import mistletoe
 from jinja2.ext import Extension
 
-from posts.models import Post, Tag, Category, Comment
+from posts.models import Post, Tag, Category, Comment, Friend
 
 
 def md5(text: str):
@@ -105,6 +105,7 @@ class PostsModelsExtension(Extension):
             'Tag': Tag,
             'Category': Category,
             'Comment': Comment,
+            'Friend': Friend,
         })
         super().__init__(env)
 

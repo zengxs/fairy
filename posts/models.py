@@ -71,3 +71,14 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class Friend(models.Model):
+    name = models.CharField(max_length=256)
+    site = models.URLField()
+    desc = models.TextField(default='', blank=True)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        status = 'visible' if self.is_visible else 'invisible'
+        return '%s: %s' % (self.name, status)

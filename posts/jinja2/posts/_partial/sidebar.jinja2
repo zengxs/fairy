@@ -53,5 +53,12 @@
         友情链接
     </div>
     <ul class="list-group list-group-flush">
+        {%- for friend in Friend.objects.filter(is_visible=true).all() %}
+        <li class="list-group-item">
+            <a class="text-dark text-decoration-none" href="{{ friend.site }}" target="_blank" title="{{ friend.desc }}">
+                {{ friend.name }}
+            </a>
+        </li>
+        {%- endfor %}
     </ul>
 </div>
